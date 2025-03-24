@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid #ddd;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    background: linear-gradient(90deg, #007aff, #4facfe);
+    padding: 10px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.time {
+    font-weight: bold;
+}
+
+.icons img {
+    width: 16px;
+    margin-left: 4px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+}
+
+.gear-icon img {
+    width: 20px;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-section .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-section .view-profile {
+    color: gray;
+    font-size: 13px;
+}
+
+.ad-banner {
+    display: flex;
+    padding: 15px;
+    background: #f9f9f9;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.ad-banner img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.ad-text h4 {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.ad-text p {
+    color: #007aff;
+    font-size: 12px;
+}
+
+.new-label {
+    background: green;
+    color: white;
+    padding: 0 5px;
+    margin-left: 5px;
+    font-size: 10px;
+    border-radius: 3px;
+}
+
+.menu {
+    flex: 1;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-item img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+.menu-item h4 {
+    font-size: 14px;
+}
+
+.menu-item p {
+    font-size: 12px;
+    color: gray;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-top: 1px solid #f0f0f0;
+    background: white;
+}
+
+.navbar img {
+    width: 25px;
+}

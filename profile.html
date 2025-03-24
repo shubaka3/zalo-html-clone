@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin cá nhân</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8f8fa;
+        }
+
+        .header {
+            position: relative;
+            background: url('https://picsum.photos/id/1015/800/400') no-repeat center;
+            background-size: cover;
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            color: white;
+        }
+
+        .profile-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid white;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .container {
+            background: white;
+            margin: -20px 20px 0 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .info-item span {
+            font-weight: bold;
+        }
+
+        .note {
+            color: gray;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #e0e0e0;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .top-bar {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            align-items: center;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        .modal-content button {
+            padding: 8px 15px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .modal-content select {
+            width: 100%;
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header" id="cover-photo">
+        <div class="top-bar">
+            <span class="icon back">&#8592;</span>
+        </div>
+        <div class="profile-img" id="avatar-img">
+            <img src="https://picsum.photos/id/1005/100/100" alt="avatar">
+        </div>
+        <div class="profile-name" id="profile-name">Pt</div>
+    </div>
+
+    <div class="container">
+        <h3>Thông tin cá nhân</h3>
+        <div class="info-item">
+            <span>Giới tính</span>
+            <div id="gender">Nữ</div>
+        </div>
+        <div class="info-item">
+            <span>Ngày sinh</span>
+            <div id="dob">09/05/1949</div>
+        </div>
+        <div class="info-item">
+            <span>Điện thoại</span>
+            <div>
+                <div id="phone">+84 0987016221</div>
+                <div class="note">Số điện thoại chỉ hiển thị với người có lưu số bạn trong danh bạ máy</div>
+            </div>
+        </div>
+        <button class="btn" id="editBtn">✏️ Chỉnh sửa</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <label>Chọn người dùng:</label>
+            <select id="user-select">
+                <option value="0">User 1 - Lan</option>
+                <option value="1">User 2 - Minh</option>
+                <option value="2">User 3 - Huyền</option>
+                <option value="3">User 4 - Phong</option>
+                <option value="4">User 5 - Thảo</option>
+            </select>
+            <button id="applyBtn">Áp dụng</button>
+        </div>
+    </div>
+
+    <script>
+        const users = [
+            {
+                name: 'Lan',
+                gender: 'Nữ',
+                dob: '1990-06-15',
+                phone: '+84 912345678',
+                avatar: 'https://picsum.photos/id/1011/100/100',
+                cover: 'https://picsum.photos/id/1021/800/400'
+            },
+            {
+                name: 'Minh',
+                gender: 'Nam',
+                dob: '1985-12-20',
+                phone: '+84 988776655',
+                avatar: 'https://picsum.photos/id/1012/100/100',
+                cover: 'https://picsum.photos/id/1035/800/400'
+            },
+            {
+                name: 'Huyền',
+                gender: 'Nữ',
+                dob: '1995-03-30',
+                phone: '+84 967890123',
+                avatar: 'https://picsum.photos/id/1015/100/100',
+                cover: 'https://picsum.photos/id/1043/800/400'
+            },
+            {
+                name: 'Phong',
+                gender: 'Nam',
+                dob: '2000-08-08',
+                phone: '+84 934567890',
+                avatar: 'https://picsum.photos/id/1019/100/100',
+                cover: 'https://picsum.photos/id/1050/800/400'
+            },
+            {
+                name: 'Thảo',
+                gender: 'Nữ',
+                dob: '1993-11-11',
+                phone: '+84 978123456',
+                avatar: 'https://picsum.photos/id/1027/100/100',
+                cover: 'https://picsum.photos/id/1060/800/400'
+            }
+        ];
+
+        const modal = document.getElementById('modal');
+        const editBtn = document.getElementById('editBtn');
+        const applyBtn = document.getElementById('applyBtn');
+
+        editBtn.onclick = () => modal.style.display = 'flex';
+        applyBtn.onclick = () => {
+            const selectedIndex = document.getElementById('user-select').value;
+            const user = users[selectedIndex];
+
+            // Gán dữ liệu user
+            document.getElementById('profile-name').innerText = user.name;
+            document.getElementById('gender').innerText = user.gender;
+            document.getElementById('dob').innerText = new Date(user.dob).toLocaleDateString('vi-VN');
+            document.getElementById('phone').innerText = user.phone;
+            document.querySelector('#avatar-img img').src = user.avatar;
+            document.getElementById('cover-photo').style.backgroundImage = `url('${user.cover}')`;
+
+            modal.style.display = 'none';
+        }
+
+        document.querySelector('.back').onclick = function () {
+            window.location.href = 'setting.html';
+        }
+    </script>
+
+</body>
+
+</html>

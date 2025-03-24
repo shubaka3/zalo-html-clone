@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting Zalo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .header {
+            background: linear-gradient(to right, #0c8eff, #00b5ff);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .header .back-icon {
+            font-size: 24px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        .header h2 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .menu {
+            padding: 15px;
+        }
+
+        .menu-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .menu-group {
+            margin-top: 20px;
+        }
+
+        .menu-group .title {
+            color: #0c8eff;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="back-icon back">&#8592;</div>
+        <h2>Pt</h2>
+    </div>
+
+    <div class="menu">
+        <div class="menu-item" id="menu-profile">Thông tin</div>
+        <div class="menu-item">Đổi ảnh đại diện</div>
+        <div class="menu-item">Đổi ảnh bìa</div>
+        <div class="menu-item">Cập nhật giới thiệu bản thân</div>
+        <div class="menu-item">Ví của tôi</div>
+
+        <div class="menu-group">
+            <div class="title">Cài đặt</div>
+            <div class="menu-item">Mã QR của tôi</div>
+            <div class="menu-item">Quyền riêng tư</div>
+            <div class="menu-item">Quản lý tài khoản</div>
+            <div class="menu-item">Cài đặt chung</div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById('menu-profile').onclick = function () {
+        window.location.href = 'profile.html';
+    }
+  
+    document.querySelector('.back').onclick = function () {
+        window.location.href = 'index.html';
+    }
+</script>
+</script>
+
+</html>
