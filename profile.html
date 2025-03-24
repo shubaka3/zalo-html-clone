@@ -250,18 +250,29 @@
         document.querySelector('.back').onclick = function () {
             window.location.href = 'setting.html';
         }
-        function openFullscreen() {
-    const elem = document.documentElement;
-    if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) { // Firefox
-        elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
-        elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { // IE/Edge
-        elem.msRequestFullscreen();
-    }
-}
+     // Hàm mở chế độ toàn màn hình
+     function openFullscreen() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { // IE/Edge
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // Kiểm tra xem đã phóng toàn màn hình chưa
+        document.addEventListener('DOMContentLoaded', function () {
+            // Kiểm tra trong localStorage
+            if (!localStorage.getItem('fullscreen')) {
+                // Nếu chưa, mở toàn màn hình và lưu trạng thái vào localStorage
+                openFullscreen();
+                localStorage.setItem('fullscreen', 'true');
+            }
+        });
 document.addEventListener('DOMContentLoaded', function () {
     // Vô hiệu hóa menu chuột phải
     document.body.addEventListener('contextmenu', function (e) {
