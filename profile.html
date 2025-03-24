@@ -127,6 +127,9 @@
             width: 100%;
             padding: 8px;
         }
+        html, body {
+                overflow: hidden;
+            }
     </style>
 </head>
 
@@ -143,7 +146,7 @@
     </div>
 
     <div class="container">
-        <h3>Thông tin cá nhân</h3>
+        <h3 onclick="openFullscreen()">Thông tin cá nhân</h3>
         <div class="info-item">
             <span>Giới tính</span>
             <div id="gender">Nữ</div>
@@ -161,6 +164,7 @@
         </div>
         <button class="btn" id="editBtn">✏️ Chỉnh sửa</button>
     </div>
+    <!-- <button onclick="openFullscreen()">Mở Toàn Màn Hình</button> -->
 
     <!-- Modal -->
     <div class="modal" id="modal">
@@ -179,6 +183,8 @@
 
     <script>
         const users = [
+        
+
             {
                 name: 'Lan',
                 gender: 'Nữ',
@@ -244,7 +250,44 @@
         document.querySelector('.back').onclick = function () {
             window.location.href = 'setting.html';
         }
+        function openFullscreen() {
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.msRequestFullscreen();
+    }
+}
+document.addEventListener('DOMContentLoaded', function () {
+    // Vô hiệu hóa menu chuột phải
+    document.body.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+    });
+
+    // Vô hiệu hóa sao chép và chọn văn bản
+    document.body.addEventListener('copy', function (e) {
+        e.preventDefault();
+    });
+
+    document.body.addEventListener('selectstart', function (e) {
+        e.preventDefault();
+    });
+
+    // Ngừng hành động nhấn phím để sao chép
+    document.body.addEventListener('keydown', function (e) {
+        if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'x')) {
+            e.preventDefault();
+        }
+    });
+});
+
+
     </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 </body>
 
